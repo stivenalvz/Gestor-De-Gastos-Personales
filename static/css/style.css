@@ -1,0 +1,63 @@
+:root {
+    --sidebar-width: 250px;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+#sidebar {
+    width: var(--sidebar-width);
+    background: #343a40;
+    color: white;
+    transition: all 0.3s;
+    position: fixed;
+    height: 100%;
+}
+
+#content {
+    width: calc(100% - var(--sidebar-width));
+    margin-left: var(--sidebar-width);
+    padding: 20px;
+}
+
+.sidebar-header {
+    padding: 20px;
+    background: #2c3136;
+}
+
+.nav-link {
+    color: white;
+    padding: 10px 20px;
+}
+
+.nav-link:hover {
+    background: #2c3136;
+    color: #fff;
+}
+
+.nav-link.active {
+    background: #0d6efd;
+}
+
+.card {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.transaction-card {
+    transition: transform 0.2s;
+}
+
+.transaction-card:hover {
+    transform: translateY(-3px);
+}
+
+.ingreso {
+    border-left: 4px solid #198754;
+}
+
+.egreso {
+    border-left: 4px solid #dc3545;
+}
+

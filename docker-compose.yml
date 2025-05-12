@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # Servicio de la aplicación Flask
+  web:
+    build: .
+    ports:
+      - "80:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - FLASK_PORT=5000
+      - DB_HOST=db
+      - DB_USER=finanzapp_user
+      - DB_PASSWORD=finanzapp_password
+      - DB_NAME=personal_finance
+      - SECRET_KEY=b20816d48d569132ff197798ea0315bf8121f7f541da4bcb72eeb6d745f33c30
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    networks:
+      - finanzapp-network
+
+  # Servicio de MySQL
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=finanzapp_password_root
+      - MYSQL_DATABASE=personal_finance
+      - MYSQL_USER=finanzapp_user
+      - MYSQL_PASSWORD=finanzapp_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+    networks:
+      - finanzapp-network
+    command: --default-authentication-plugin=mysql_native_password
+
+networks:
+  finanzapp-network:
+    driver: bridge
+
+volumes:
+  mysql_data: 

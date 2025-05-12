@@ -53,8 +53,8 @@ The frontend design is modern and attractive, with a user-friendly interface, an
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/stivenalvz.git
-   cd stivenalvz
+   git clone https://github.com/stivenalvz/Gestor-De-Gastos-Personales.git
+   cd Gestor-De-Gastos-Personales
    ```
 
 2. In the project directory, run:
